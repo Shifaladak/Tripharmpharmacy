@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <!-- Favicon -->
+      <link rel="icon" type="image/svg+xml" href="./favicon-heart.svg">
+      <link rel="icon" type="image/png" sizes="32x32" href="./favicon-heart-32x32.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="./favicon-heart-16x16.png">
+      <link rel="apple-touch-icon" sizes="192x192" href="./favicon-heart-192x192.png">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us – TriPharm Pharmacy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --blue: #1a5fa8;
+      --blue-light: #2e7dd4;
+      --blue-pale: #e8f2fc;
+      --green: #3aaa5c;
+      --green-light: #4dc96e;
+      --green-pale: #e8f7ed;
+      --white: #ffffff;
+      --off-white: #f7fafd;
+      --text-dark: #1a2535;
+      --text-mid: #4a5568;
+      --text-light: #718096;
+      --shadow: 0 4px 24px rgba(26,95,168,0.10);
+      --radius: 16px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'DM Sans', sans-serif; color: var(--text-dark); background: var(--white); }
+
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #e2ecf8;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 5%;
+      box-shadow: 0 2px 16px rgba(26,95,168,0.07);
+    }
+    nav img.logo { height: 120px; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--text-mid); font-weight: 500; font-size: 15px; transition: color .2s; }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--blue), var(--blue-light));
+      color: #fff; padding: 10px 24px;
+      border-radius: 30px; font-weight: 600; text-decoration: none; font-size: 15px;
+      box-shadow: 0 4px 16px rgba(26,95,168,0.25); transition: transform .2s;
+    }
+    .nav-cta:hover { transform: translateY(-2px); }
+
+    /* PAGE HERO */
+    .page-hero {
+      background: linear-gradient(135deg, var(--blue) 0%, #0d4a8a 100%);
+      padding: 80px 5%; text-align: center; color: #fff;
+    }
+    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 16px; }
+    .page-hero p { font-size: 17px; opacity: .85; max-width: 560px; margin: 0 auto; line-height: 1.7; }
+
+    .section { padding: 72px 5%; }
+    .section-alt { background: var(--off-white); }
+
+    .section-title { text-align: center; margin-bottom: 48px; }
+    .section-title h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.4rem); margin-bottom: 10px; }
+    .section-title p { color: var(--text-mid); font-size: 16px; }
+    .section-title .line { width: 60px; height: 4px; background: linear-gradient(90deg, var(--blue), var(--green)); border-radius: 4px; margin: 14px auto 0; }
+
+    /* MISSION */
+    .mission-wrap {
+      display: flex; align-items: center; gap: 60px; flex-wrap: wrap;
+    }
+    .mission-img {
+      flex: 1; min-width: 280px;
+      border-radius: 24px; overflow: hidden;
+      box-shadow: 0 16px 48px rgba(26,95,168,.18);
+    }
+    .mission-img img { width: 100%; display: block; }
+    .mission-text { flex: 1; min-width: 260px; }
+    .mission-text h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 20px; color: var(--text-dark); }
+    .mission-text p { color: var(--text-mid); font-size: 16px; line-height: 1.8; margin-bottom: 16px; }
+    .mission-text .highlight {
+      background: var(--blue-pale); border-left: 4px solid var(--blue);
+      padding: 16px 20px; border-radius: 0 12px 12px 0;
+      font-size: 16px; color: var(--blue); font-weight: 500;
+      margin-top: 20px;
+    }
+
+    /* VALUES */
+    .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+    .value-card {
+      background: var(--white); border: 1px solid #e2ecf8;
+      border-radius: var(--radius); padding: 28px 22px;
+      text-align: center; box-shadow: var(--shadow);
+      transition: transform .3s;
+    }
+    .value-card:hover { transform: translateY(-5px); }
+    .value-icon { font-size: 40px; margin-bottom: 16px; display: block; }
+    .value-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 8px; }
+    .value-card p { font-size: 14px; color: var(--text-mid); line-height: 1.6; }
+
+    /* TEAM */
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 28px; }
+    .team-card {
+      background: var(--white); border-radius: var(--radius);
+      padding: 32px 20px; text-align: center;
+      box-shadow: var(--shadow); border: 1px solid #e2ecf8;
+    }
+    .team-avatar {
+      width: 90px; height: 90px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue-pale), var(--green-pale));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 42px; margin: 0 auto 16px;
+      border: 3px solid var(--blue-pale);
+    }
+    .team-card h3 { font-size: 17px; font-weight: 600; }
+    .team-card .role { font-size: 13px; color: var(--blue); font-weight: 600; margin: 4px 0 8px; }
+    .team-card p { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+    /* HOURS & LOCATION */
+    .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; }
+    .info-card {
+      background: var(--white); border-radius: var(--radius);
+      padding: 32px 28px; box-shadow: var(--shadow); border: 1px solid #e2ecf8;
+    }
+    .info-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 20px; color: var(--text-dark); display: flex; align-items: center; gap: 10px; }
+    .hours-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #f0f4f8; font-size: 15px; }
+    .hours-row:last-child { border-bottom: none; }
+    .hours-row .day { color: var(--text-mid); }
+    .hours-row .time { font-weight: 600; color: var(--text-dark); }
+    .contact-row { display: flex; align-items: center; gap: 14px; padding: 10px 0; border-bottom: 1px solid #f0f4f8; font-size: 15px; }
+    .contact-row:last-child { border-bottom: none; }
+    .contact-icon { font-size: 22px; }
+    .contact-row a { color: var(--blue); text-decoration: none; font-weight: 500; }
+
+    /* FAQ */
+    .faq-list { max-width: 760px; margin: 0 auto; }
+    .faq-item { border: 1px solid #e2ecf8; border-radius: var(--radius); margin-bottom: 12px; overflow: hidden; }
+    .faq-question {
+      padding: 20px 24px; cursor: pointer;
+      font-weight: 600; font-size: 16px; color: var(--text-dark);
+      display: flex; justify-content: space-between; align-items: center;
+      background: var(--white); transition: background .2s;
+    }
+    .faq-question:hover { background: var(--blue-pale); }
+    .faq-question .arrow { transition: transform .3s; font-size: 18px; }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height .4s ease, padding .4s; }
+    .faq-answer p { padding: 0 24px 20px; color: var(--text-mid); font-size: 15px; line-height: 1.7; }
+    .faq-item.open .faq-answer { max-height: 200px; }
+    .faq-item.open .faq-question { background: var(--blue-pale); color: var(--blue); }
+    .faq-item.open .arrow { transform: rotate(180deg); }
+
+    /* CTA BANNER */
+    .cta-section {
+      background: linear-gradient(135deg, var(--green) 0%, #2d9650 100%);
+      padding: 64px 5%; text-align: center; color: #fff;
+    }
+    .cta-section h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 16px; }
+    .cta-section p { font-size: 16px; opacity: .9; margin-bottom: 32px; }
+    .cta-btn {
+      display: inline-block;
+      background: #fff; color: var(--green);
+      padding: 14px 40px; border-radius: 30px;
+      font-weight: 700; font-size: 17px; text-decoration: none;
+      box-shadow: 0 6px 24px rgba(0,0,0,.15);
+      transition: transform .2s; margin: 8px;
+    }
+    .cta-btn:hover { transform: translateY(-2px); }
+    .cta-btn-outline {
+      display: inline-block;
+      background: transparent; color: #fff;
+      padding: 14px 40px; border-radius: 30px;
+      font-weight: 700; font-size: 17px; text-decoration: none;
+      border: 2px solid rgba(255,255,255,.7);
+      transition: all .2s; margin: 8px;
+    }
+    .cta-btn-outline:hover { background: rgba(255,255,255,.1); }
+
+    footer {
+      background: var(--text-dark); color: #aab8cc;
+      padding: 40px 5% 24px;
+      text-align: center; font-size: 14px;
+    }
+    footer a { color: #aab8cc; text-decoration: none; }
+    footer .footer-logo { height: 48px; margin-bottom: 16px; }
+    footer p { margin-bottom: 8px; }
+
+    /* ── HAMBURGER ── */
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 4px; background: none; border: none;
+    }
+    .hamburger span {
+      display: block; width: 26px; height: 3px;
+      background: var(--blue); border-radius: 3px; transition: all .3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    .mobile-menu {
+      display: none; position: fixed; top: 90px; left: 0; right: 0;
+      background: #fff; z-index: 99;
+      border-bottom: 2px solid var(--blue-pale);
+      box-shadow: 0 8px 32px rgba(26,95,168,.12);
+      padding: 16px 0;
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a {
+      display: block; padding: 14px 5%; font-size: 17px;
+      font-weight: 500; color: var(--text-dark);
+      text-decoration: none; border-bottom: 1px solid #f0f4f8;
+    }
+    .mobile-menu a:hover { background: var(--blue-pale); color: var(--blue); }
+
+    /* ── TABLET ── */
+    @media (max-width: 900px) {
+      .info-grid { grid-template-columns: 1fr 1fr; }
+      .team-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      nav { padding: 12px 4%; }
+      nav img.logo { height: 52px; }
+
+      .page-hero { padding: 52px 4%; }
+      .page-hero h1 { font-size: 1.8rem; }
+
+      .section { padding: 48px 4%; }
+      .mission-wrap { flex-direction: column; gap: 32px; }
+      .mission-img { min-width: unset; width: 100%; }
+
+      .values-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+      .team-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+      .info-grid { grid-template-columns: 1fr; }
+
+      .faq-question { font-size: 15px; padding: 16px 18px; }
+      .cta-section { padding: 52px 4%; }
+      .cta-btn, .cta-btn-outline { display: block; margin: 10px auto; max-width: 280px; text-align: center; }
+    }
+
+    /* ── SMALL PHONES ── */
+    @media (max-width: 400px) {
+      .values-grid { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <img src="./ChatGPT Image May 2, 2026, 06_00_19 PM.png" alt="TriPharm Logo" class="logo"/>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="insurance.html">Products</a></li>
+    <li><a href="insurance.html">Insurance</a></li>
+    <li><a href="about.html" style="color:var(--blue)">About Us</a></li>
+  </ul>
+  <a href="tel:+1-000-000-0000" class="nav-cta">📞 Call Us</a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">🏠 Home</a>
+  <a href="index.html#services">💊 Services</a>
+  <a href="index.html#products">🛒 Products</a>
+  <a href="index.html#insurance">🏥 Insurance</a>
+  <a href="about.html" style="color:var(--blue);font-weight:700;">ℹ️ About Us</a>
+  <a href="tel:+1-000-000-0000" style="color:var(--blue);font-weight:700;">📞 Call Us Now</a>
+</div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <h1>About TriPharm Pharmacy</h1>
+  <p>A community pharmacy built on trust, care, and a genuine passion for your well-being.</p>
+</section>
+
+<!-- MISSION -->
+<section class="section">
+  <div class="mission-wrap">
+    <div class="mission-img">
+      <img src="./—Pngtree—family heath care vector art_20111866.png" alt="Family care at TriPharm"/>
+    </div>
+    <div class="mission-text">
+      <h2>We're More Than a Pharmacy</h2>
+      <p>At TriPharm, we believe that great pharmacy care is personal. We take the time to know our patients, understand their needs, and make sure every prescription is filled accurately and with compassion.</p>
+      <p>Located in the heart of Staten Island, we proudly serve families, seniors, and healthcare providers across our community. From your first visit, you'll notice the difference.</p>
+      <div class="highlight">
+        💬 "Your Health. Our Priority." — this isn't just our tagline. It's how we show up every single day.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="section section-alt">
+  <div class="section-title">
+    <h2>What We Stand For</h2>
+    <p>Our values guide everything we do.</p>
+    <div class="line"></div>
+  </div>
+  <div class="values-grid">
+    <div class="value-card">
+      <span class="value-icon">💙</span>
+      <h3>Compassion</h3>
+      <p>We treat every patient like family — with warmth, respect, and genuine care.</p>
+    </div>
+    <div class="value-card">
+      <span class="value-icon">✅</span>
+      <h3>Accuracy</h3>
+      <p>Every prescription is verified carefully to ensure your safety and peace of mind.</p>
+    </div>
+    <div class="value-card">
+      <span class="value-icon">⚡</span>
+      <h3>Speed</h3>
+      <p>Same-day filling means you get your medication when you need it — not tomorrow.</p>
+    </div>
+    <div class="value-card">
+      <span class="value-icon">🌿</span>
+      <h3>Community</h3>
+      <p>We're proud to serve Staten Island and the surrounding area as a trusted local pharmacy.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="section">
+  <div class="section-title">
+    <h2>Meet Our Team</h2>
+    <p>Friendly, knowledgeable, and always here for you.</p>
+    <div class="line"></div>
+  </div>
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-avatar">👨‍⚕️</div>
+      <h3>Lead Pharmacist</h3>
+
+      <p>Years of experience ensuring safe, accurate dispensing and patient education.</p>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar">👩‍⚕️</div>
+      <h3>Clinical Pharmacist</h3>
+      <p>Specializes in medication therapy management and patient consultations.</p>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar">🧑‍💼</div>
+      <h3>Pharmacy Technicians</h3>
+      <p>Dedicated team members keeping everything running smoothly and efficiently.</p>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar">😊</div>
+      <h3>Front Staff</h3>
+      <p>Friendly faces ready to greet you, answer questions, and make your visit easy.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS & CONTACT -->
+<section class="section section-alt" id="hours">
+  <div class="section-title">
+    <h2>Hours & Contact</h2>
+    <p>We're here when you need us.</p>
+    <div class="line"></div>
+  </div>
+  <div class="info-grid">
+    <div class="info-card">
+      <h3>🕐 Pharmacy Hours</h3>
+      <div class="hours-row"><span class="day">Monday</span><span class="time">10:00 AM – 6:00 PM</span></div>
+      <div class="hours-row"><span class="day">Tuesday</span><span class="time">10:00 AM – 6:00 PM</span></div>
+      <div class="hours-row"><span class="day">Wednesday</span><span class="time">10:00 AM – 6:00 PM</span></div>
+      <div class="hours-row"><span class="day">Thursday</span><span class="time">10:00 AM – 6:00 PM</span></div>
+      <div class="hours-row"><span class="day">Friday</span><span class="time">10:00 AM – 6:00 PM</span></div>
+      <div class="hours-row"><span class="day">Saturday</span><span class="time">Closed</span></div>
+      <div class="hours-row"><span class="day">Sunday</span><span class="time">Closed</span></div>
+    </div>
+    <div class="info-card">
+      <h3>📞 Get in Touch</h3>
+      <div class="contact-row"><span class="contact-icon">📞</span><div><strong>Phone</strong><br/><a href="tel:+1-000-000-0000">(718) 816-1116</a></div></div>
+      <div class="contact-row"><span class="contact-icon">📠</span><div><strong>Fax (for Doctors)</strong><br/><a href="#">(718) 816-1117</a></div></div>
+      <div class="contact-row"><span class="contact-icon">✉️</span><div><strong>Email</strong><br/><a href="mailto:info@tripharmpharmacy.com">info@tripharmpharmacy.com</a></div></div>
+      <div class="contact-row"><span class="contact-icon">📍</span><div><strong>Address</strong><br/>200 Port Richmond Ave, Staten Island, NY 10302</div></div>
+    </div>
+    <div class="info-card">
+      <h3>🚚 Delivery & Services</h3>
+      <div class="contact-row"><span class="contact-icon">🚚</span><div><strong>Free Delivery</strong><br/>Available in our service area</div></div>
+      <div class="contact-row"><span class="contact-icon">⚡</span><div><strong>Same-Day Filling</strong><br/>Most prescriptions filled same day</div></div>
+      <div class="contact-row"><span class="contact-icon">🏥</span><div><strong>All Insurances</strong><br/>We accept all major plans</div></div>
+      <div class="contact-row"><span class="contact-icon">💊</span><div><strong>Medication Counseling</strong><br/>Free with every prescription</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- For Doctors / Prescribers -->
+<section class="section">
+  <div class="section-title">
+    <h2>For Healthcare Providers</h2>
+    <p>We make it easy to send prescriptions to TriPharm.</p>
+    <div class="line"></div>
+  </div>
+  <div class="info-grid" style="max-width:860px;margin:0 auto;">
+    <div class="info-card" style="text-align:center;">
+      <div style="font-size:48px;margin-bottom:16px;">📠</div>
+      <h3 style="justify-content:center;">Send by Fax</h3>
+      <p style="color:var(--text-mid);font-size:15px;line-height:1.7;">Fax prescriptions directly to our pharmacy. Our team will have them ready for your patient quickly.</p>
+      <a href="#" style="display:inline-block;margin-top:16px;color:var(--blue);font-weight:700;font-size:16px;">Fax: (718) 816-1117</a>
+    </div>
+    <div class="info-card" style="text-align:center;">
+      <div style="font-size:48px;margin-bottom:16px;">📞</div>
+      <h3 style="justify-content:center;">Call Us Directly</h3>
+      <p style="color:var(--text-mid);font-size:15px;line-height:1.7;">For urgent prescriptions or questions, our pharmacists are available to speak with you directly.</p>
+      <a href="tel:+1-000-000-0000" style="display:inline-block;margin-top:16px;color:var(--blue);font-weight:700;font-size:16px;">(718) 816-1116</a>
+    </div>
+    <div class="info-card" style="text-align:center;">
+      <div style="font-size:48px;margin-bottom:16px;">💊</div>
+      <h3 style="justify-content:center;">E-Prescribe</h3>
+      <p style="color:var(--text-mid);font-size:15px;line-height:1.7;">We accept electronic prescriptions through all major e-prescribing platforms. Quick and seamless.</p>
+      <span style="display:inline-block;margin-top:16px;color:var(--green);font-weight:700;font-size:15px;">✔ All platforms accepted</span>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section section-alt">
+  <div class="section-title">
+    <h2>Frequently Asked Questions</h2>
+    <p>Quick answers to common questions.</p>
+    <div class="line"></div>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-question">Do you accept my insurance? <span class="arrow">▾</span></div>
+      <div class="faq-answer"><p>Yes! We accept all major insurance plans including Medicare, Medicaid, Horizon, United Healthcare, and many more. Call us if you're unsure — we likely cover yours.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">How do I get my prescription delivered? <span class="arrow">▾</span></div>
+      <div class="faq-answer"><p>Simply call us or ask at the counter. We offer free home delivery within our service area. Just let us know your address and we'll take care of the rest.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">How long does it take to fill a prescription? <span class="arrow">▾</span></div>
+      <div class="faq-answer"><p>Most prescriptions are filled the same day — often within the hour. For new prescriptions, we recommend calling ahead or dropping off early to ensure the quickest turnaround.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Can I transfer my prescription from another pharmacy? <span class="arrow">▾</span></div>
+      <div class="faq-answer"><p>Absolutely. Just bring your old prescription bottle or give us the pharmacy's number and we'll handle the transfer for you — no hassle at all.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Do you have a pharmacist I can speak with? <span class="arrow">▾</span></div>
+      <div class="faq-answer"><p>Yes! Our licensed pharmacists are always available to answer your questions, review your medications, and provide counseling. We're here to help — don't hesitate to ask.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Ready to Make the Switch?</h2>
+  <p>Join our growing family of patients in Staten Island. We're here to make your health simple.</p>
+  <a href="tel:+1 (718) 816-1116" class="cta-btn">📞 Call Us Now</a>
+  <a href="index.html#review" class="cta-btn-outline">⭐ Leave a Review</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img src="./ChatGPT Image May 2, 2026, 06_00_19 PM.png" alt="TriPharm Logo" class="footer-logo"/>
+  <p>TriPharm Pharmacy — Your Health. Our Priority.</p>
+  <p>200 Port Richmond Ave, Staten Island, NY 10302&nbsp;|&nbsp; <a href="tel:+1-000-000-0000">(718) 816-1116</a> &nbsp;&nbsp; <br> <a href="index.html">Back to Home</a></p>
+  <p style="margin-top:16px;font-size:12px;opacity:.6;">© 2026 TriPharm Pharmacy. All rights reserved.</p>
+</footer>
+
+<script>
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="./favicon-heart.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-heart-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-heart-16x16.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="./favicon-heart-192x192.png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TriPharm Pharmacy – Better Care Starts Here.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --blue: #1a5fa8;
+      --blue-light: #2e7dd4;
+      --blue-pale: #e8f2fc;
+      --green: #3aaa5c;
+      --green-light: #4dc96e;
+      --green-pale: #e8f7ed;
+      --white: #ffffff;
+      --off-white: #f7fafd;
+      --text-dark: #1a2535;
+      --text-mid: #4a5568;
+      --text-light: #718096;
+      --shadow: 0 4px 24px rgba(26,95,168,0.10);
+      --radius: 16px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text-dark);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #e2ecf8;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 5%;
+      box-shadow: 0 2px 16px rgba(26,95,168,0.07);
+    }
+    nav img.logo { height: 120px; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--text-mid);
+      font-weight: 500; font-size: 15px;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--blue), var(--blue-light));
+      color: #fff; padding: 10px 24px;
+      border-radius: 30px; font-weight: 600;
+      text-decoration: none; font-size: 15px;
+      transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 4px 16px rgba(26,95,168,0.25);
+    }
+    .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(26,95,168,0.35); }
+
+    /* ── HERO ── */
+    .hero {
+      display: flex; align-items: center;
+      min-height: 88vh;
+      padding: 60px 5%;
+      background: linear-gradient(135deg, #e8f2fc 0%, #f0faf4 100%);
+      gap: 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -80px; right: -80px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(58,170,92,.15), transparent 70%);
+      border-radius: 50%;
+    }
+    .hero-text { flex: 1; max-width: 540px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--green-pale); color: var(--green);
+      border: 1px solid rgba(58,170,92,.3);
+      padding: 6px 16px; border-radius: 30px;
+      font-size: 13px; font-weight: 600; margin-bottom: 24px;
+      letter-spacing: .4px;
+    }
+    .hero-badge span { width: 8px; height: 8px; background: var(--green); border-radius: 50%; display: inline-block; }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      line-height: 1.2;
+      color: var(--text-dark);
+      margin-bottom: 18px;
+    }
+    .hero h1 span { color: var(--blue); }
+    .hero p {
+      font-size: 17px; color: var(--text-mid);
+      line-height: 1.7; margin-bottom: 36px;
+    }
+    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blue), var(--blue-light));
+      color: #fff; padding: 14px 32px;
+      border-radius: 30px; font-weight: 600; font-size: 16px;
+      text-decoration: none; transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 4px 20px rgba(26,95,168,0.3);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(26,95,168,0.4); }
+    .btn-secondary {
+      background: var(--white); color: var(--blue);
+      padding: 14px 32px; border-radius: 30px;
+      font-weight: 600; font-size: 16px;
+      text-decoration: none; border: 2px solid var(--blue);
+      transition: all .2s;
+    }
+    .btn-secondary:hover { background: var(--blue-pale); }
+    .hero-image { flex: 1; display: flex; justify-content: center; }
+    .hero-image img { max-width: 480px; width: 100%; border-radius: 24px; }
+
+    /* ── TRUST BADGES ── */
+    .trust-bar {
+      display: flex; justify-content: center; flex-wrap: wrap;
+      gap: 32px; padding: 32px 5%;
+      background: var(--white);
+      border-bottom: 1px solid #e2ecf8;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .trust-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: var(--blue-pale);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+    }
+    .trust-item strong { display: block; font-size: 15px; color: var(--text-dark); }
+    .trust-item span { font-size: 13px; color: var(--text-light); }
+
+    /* ── DELIVERY BANNER ── */
+    .delivery-banner {
+      background: linear-gradient(135deg, var(--blue) 0%, #0d4a8a 100%);
+      padding: 40px 5%;
+      display: flex; align-items: center; justify-content: center;
+      gap: 48px; flex-wrap: wrap;
+    }
+    .delivery-banner img { max-height: 120px; filter: drop-shadow(0 8px 20px rgba(0,0,0,.3)); }
+    .delivery-text { color: #fff; }
+    .delivery-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem; margin-bottom: 8px;
+    }
+    .delivery-text p { font-size: 16px; opacity: .85; max-width: 400px; }
+
+    /* ── SERVICES ── */
+    .section { padding: 72px 5%; }
+    .section-title {
+      text-align: center; margin-bottom: 48px;
+    }
+    .section-title h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      color: var(--text-dark); margin-bottom: 12px;
+    }
+    .section-title p { color: var(--text-mid); font-size: 16px; }
+    .section-title .line {
+      width: 60px; height: 4px;
+      background: linear-gradient(90deg, var(--blue), var(--green));
+      border-radius: 4px; margin: 16px auto 0;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+    .service-card {
+      background: var(--white);
+      border: 1px solid #e2ecf8;
+      border-radius: var(--radius);
+      padding: 32px 24px;
+      text-align: center;
+      transition: transform .3s, box-shadow .3s;
+      box-shadow: var(--shadow);
+    }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(26,95,168,0.15); }
+    .service-icon {
+      width: 68px; height: 68px; border-radius: 18px;
+      background: var(--blue-pale);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 32px; margin: 0 auto 20px;
+    }
+    .service-card h3 { font-size: 17px; font-weight: 600; margin-bottom: 8px; color: var(--text-dark); }
+    .service-card p { font-size: 14px; color: var(--text-mid); line-height: 1.6; }
+
+    /* ── PRODUCTS SLIDER ── */
+    .products-section { background: var(--off-white); }
+    .slider-track-wrap { overflow: hidden; position: relative; }
+    .slider-track-wrap::before, .slider-track-wrap::after {
+      content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2;
+    }
+    .slider-track-wrap::before { left: 0; background: linear-gradient(90deg, var(--off-white), transparent); }
+    .slider-track-wrap::after { right: 0; background: linear-gradient(-90deg, var(--off-white), transparent); }
+    .slider-track {
+      display: flex; gap: 24px;
+      animation: scroll 28s linear infinite;
+      width: max-content;
+    }
+    .slider-track:hover { animation-play-state: paused; }
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .product-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      text-align: center;
+      width: 200px; flex-shrink: 0;
+      box-shadow: var(--shadow);
+      border: 1px solid #e2ecf8;
+      transition: transform .3s;
+    }
+    .product-card:hover { transform: translateY(-4px); }
+    .product-emoji { font-size: 52px; margin-bottom: 12px; display: block; }
+    .product-card h4 { font-size: 14px; font-weight: 600; color: var(--text-dark); }
+    .product-tag {
+      display: inline-block; margin-top: 8px;
+      background: var(--blue-pale); color: var(--blue);
+      border-radius: 20px; padding: 3px 12px;
+      font-size: 11px; font-weight: 600;
+    }
+
+    /* ── INSURANCE ── */
+    .insurance-section { background: var(--white); }
+    .insurance-grid {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 16px;
+    }
+    .insurance-pill {
+      background: var(--blue-pale); color: var(--blue);
+      padding: 10px 22px; border-radius: 30px;
+      font-size: 15px; font-weight: 500;
+      border: 1px solid rgba(26,95,168,0.2);
+      transition: background .2s;
+    }
+    .insurance-pill:hover { background: #d0e8f8; }
+
+    /* ── REVIEW SECTION ── */
+    .review-section {
+      background: linear-gradient(135deg, #e8f2fc 0%, #e8f7ed 100%);
+      padding: 80px 5%; text-align: center;
+    }
+    .review-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      margin-bottom: 12px; color: var(--text-dark);
+    }
+    .review-section > p { color: var(--text-mid); font-size: 16px; margin-bottom: 40px; }
+    .star-prompt { font-size: 17px; font-weight: 500; color: var(--text-dark); margin-bottom: 20px; }
+    .stars-container { display: flex; justify-content: center; gap: 10px; margin-bottom: 32px; }
+    .star-btn {
+      background: none; border: none; cursor: pointer;
+      font-size: 48px; transition: transform .2s, filter .2s;
+      filter: grayscale(1) opacity(.5);
+      padding: 4px;
+    }
+    .star-btn:hover, .star-btn.active {
+      filter: none; transform: scale(1.25);
+    }
+    .star-label {
+      text-align: center; font-size: 18px; font-weight: 600;
+      color: var(--blue); min-height: 28px; margin-bottom: 20px;
+      transition: opacity .3s;
+    }
+    .review-go-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--blue), var(--blue-light));
+      color: #fff; padding: 14px 40px;
+      border-radius: 30px; font-weight: 700; font-size: 16px;
+      text-decoration: none;
+      box-shadow: 0 6px 24px rgba(26,95,168,.3);
+      transition: transform .2s, box-shadow .2s;
+      opacity: 0; pointer-events: none;
+      transform: translateY(10px);
+      transition: opacity .3s, transform .3s;
+    }
+    .review-go-btn.visible {
+      opacity: 1; pointer-events: auto; transform: translateY(0);
+    }
+    .google-note { margin-top: 16px; font-size: 13px; color: var(--text-light); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--text-dark);
+      color: #aab8cc;
+      padding: 48px 5% 28px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px; margin-bottom: 40px;
+    }
+    .footer-brand img { height: 56px; margin-bottom: 14px; }
+    .footer-brand p { font-size: 14px; line-height: 1.7; }
+    .footer-col h4 { color: #fff; font-size: 15px; font-weight: 600; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a { color: #aab8cc; text-decoration: none; font-size: 14px; transition: color .2s; }
+    .footer-col ul li a:hover { color: #fff; }
+    .footer-bottom {
+      border-top: 1px solid #2d3a4e;
+      padding-top: 24px; text-align: center;
+      font-size: 13px; color: #6b7f96;
+    }
+
+    /* ── HAMBURGER ── */
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 4px; background: none; border: none;
+    }
+    .hamburger span {
+      display: block; width: 26px; height: 3px;
+      background: var(--blue); border-radius: 3px;
+      transition: all .3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none; position: fixed; top: 90px; left: 0; right: 0;
+      background: #fff; z-index: 99;
+      border-bottom: 2px solid var(--blue-pale);
+      box-shadow: 0 8px 32px rgba(26,95,168,.12);
+      padding: 16px 0;
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a {
+      display: block; padding: 14px 5%;
+      font-size: 17px; font-weight: 500; color: var(--text-dark);
+      text-decoration: none; border-bottom: 1px solid #f0f4f8;
+      transition: background .2s;
+    }
+    .mobile-menu a:hover { background: var(--blue-pale); color: var(--blue); }
+
+    /* ── TABLET (max 900px) ── */
+    @media (max-width: 900px) {
+      .hero { gap: 32px; }
+      .hero-image img { max-width: 340px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ── MOBILE (max 768px) ── */
+    @media (max-width: 768px) {
+      /* Nav */
+      .nav-links { display: none; }
+      .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      nav { padding: 12px 4%; }
+      nav img.logo { height: 52px; }
+
+      /* Hero */
+      .hero {
+        flex-direction: column; padding: 36px 4%;
+        text-align: center; min-height: auto; gap: 28px;
+      }
+      .hero-text { max-width: 100%; }
+      .hero-image { display: none; }
+      .hero-btns { justify-content: center; flex-direction: column; align-items: center; }
+      .btn-primary, .btn-secondary { width: 100%; max-width: 300px; text-align: center; }
+
+      /* Trust bar */
+      .trust-bar { gap: 20px; padding: 24px 4%; }
+      .trust-item { width: 45%; }
+
+      /* Delivery banner */
+      .delivery-banner { flex-direction: column; text-align: center; gap: 20px; padding: 36px 4%; }
+      .delivery-banner img { max-height: 90px; }
+      .delivery-text h2 { font-size: 1.5rem; }
+
+      /* Sections */
+      .section { padding: 48px 4%; }
+      .services-grid { grid-template-columns: 1fr; gap: 16px; }
+
+      /* Products */
+      .product-card { width: 160px; }
+      .product-emoji { font-size: 40px; }
+
+      /* Insurance */
+      .insurance-pill { font-size: 13px; padding: 8px 16px; }
+
+      /* Review */
+      .review-section { padding: 56px 4%; }
+      .star-btn { font-size: 38px; }
+
+      /* Footer */
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+    }
+
+    /* ── SMALL PHONES (max 400px) ── */
+    @media (max-width: 400px) {
+      .trust-item { width: 100%; }
+      .hero h1 { font-size: 1.9rem; }
+      .star-btn { font-size: 32px; }
+      .product-card { width: 140px; }
+    }
+    .navlite{
+
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  
+  <img src="./ChatGPT Image May 2, 2026, 06_00_19 PM.png" alt="TriPharm Pharmacy Logo" class="logo"/>
+  <ul class="nav-links">
+    <li><a href="services.html">Services</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="#insurance.html">Insurance</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="tel:+1-000-000-0000" class="nav-cta">📞 (718) 816-1116</a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+  
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" onclick="closeMenu()">💊 Services</a>
+  <a href="#products" onclick="closeMenu()">🛒 Products</a>
+  <a href="#insurance" onclick="closeMenu()">🏥 Insurance</a>
+  <a href="about.html">ℹ️ About Us</a>
+  <a href="#contact" onclick="closeMenu()">📍 Contact</a>
+  <a href="tel:+1-000-000-0000" style="color:var(--blue);font-weight:700;">📞 Call Us Now: (718) 816-1116</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-badge"><span></span>Your Most Trusted Pharmacy</div>
+    <h1>Better  Care.<br/><span>Starts Here.</span></h1>
+    <p>Friendly, personalized pharmacy care for you and your family. We make getting your prescriptions easy and stress-free.</p>
+    <div class="hero-btns">
+      <a href="tel:+1-000-000-0000" class="btn-primary">📞 Call for more info: (718) 816-1116</a>
+      <a href="about.html" class="btn-secondary">Learn More</a>
+    </div>
+  </div>
+  <div class="hero-image">
+    <img src="./—Pngtree—the childhood parenting and relationship_15359143.png" alt="Caring for your family"/>
+  </div>
+</section>
+
+<!-- TRUST BADGES -->
+<div class="trust-bar">
+  <div class="trust-item">
+    <div class="trust-icon">🚚</div>
+    <div>
+      <strong>Free Delivery</strong>
+      <span>Right to your door</span>
+    </div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon" style="background:var(--green-pale);">⚡</div>
+    <div>
+      <strong>Same-Day Filling</strong>
+      <span>Fast & efficient</span>
+    </div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon">🏥</div>
+    <div>
+      <strong>All Insurances</strong>
+      <span>We accept them all</span>
+    </div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon" style="background:var(--green-pale);">💊</div>
+    <div>
+      <strong>Expert Pharmacists</strong>
+      <span>Always ready to help</span>
+    </div>
+  </div>
+</div>
+
+<!-- DELIVERY BANNER -->
+<section class="delivery-banner">
+  <img src="./—Pngtree—free delivery truck icon_8951758.png" alt="Free Delivery"/>
+  <div class="delivery-text">
+    <h2>🎉 Free Delivery Available!</h2>
+    <p>We bring your prescriptions and health products directly to your home — and at no extra cost.</p>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="section-title">
+    <h2>How We Help You</h2>
+    <p>Everything you need, all in one place.</p>
+    <div class="line"></div>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">💊</div>
+      <h3>Prescription Filling</h3>
+      <p>Same-day prescription filling. Drop off or call in — we have it ready.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon" style="background:var(--green-pale);">🚚</div>
+      <h3>Free Home Delivery</h3>
+      <p>Can't come to us? We'll come to you. Free delivery on all prescriptions.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏥</div>
+      <h3>All Insurances Welcome</h3>
+      <p>We accept all major insurance plans — no need to worry about coverage.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon" style="background:var(--green-pale);">🤝</div>
+      <h3>Medication Counseling</h3>
+      <p>Our pharmacists are happy to answer your questions and explain your medications.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔄</div>
+      <h3>Easy Refills</h3>
+      <p>Call, walk in, or send your doctor's fax — refilling is simple and quick.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon" style="background:var(--green-pale);">🌿</div>
+      <h3>Health & Wellness Products</h3>
+      <p>Vitamins, OTC medications, baby care, and everyday health essentials.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS SLIDER -->
+<section class="section products-section" id="products">
+  <div class="section-title">
+    <h2>Products We Carry</h2>
+    <p>Health essentials and more — always in stock.</p>
+    <div class="line"></div>
+  </div>
+  <div class="slider-track-wrap">
+    <div class="slider-track" id="sliderTrack">
+      <!-- Items duplicated for seamless loop -->
+      <div class="product-card"><span class="product-emoji">💊</span><h4>Vitamins & Supplements</h4><div class="product-tag">Wellness</div></div>
+      <div class="product-card"><span class="product-emoji">🧴</span><h4>Baby Oil</h4><div class="product-tag">Baby Care</div></div>
+      <div class="product-card"><span class="product-emoji">🍼</span><h4>Baby Moisturizer</h4><div class="product-tag">Baby Care</div></div>
+      <div class="product-card"><span class="product-emoji">🪥</span><h4>Hygiene</h4><div class="product-tag">Personal Care</div></div>
+      <div class="product-card"><span class="product-emoji">🌻</span><h4>Vitamin E</h4><div class="product-tag">Wellness</div></div>
+      <div class="product-card"><span class="product-emoji">🌸</span><h4>Claritin</h4><div class="product-tag">Allergy Relief</div></div>
+      <div class="product-card"><span class="product-emoji">🍫</span><h4>Chocolate</h4><div class="product-tag">Snacks</div></div>
+      <div class="product-card"><span class="product-emoji">💊</span><h4>OTC Medications</h4><div class="product-tag">Health</div></div>
+      <!-- Duplicated for loop -->
+      <div class="product-card"><span class="product-emoji">💊</span><h4>Vitamins & Supplements</h4><div class="product-tag">Wellness</div></div>
+      <div class="product-card"><span class="product-emoji">🧴</span><h4>Baby Oil</h4><div class="product-tag">Baby Care</div></div>
+      <div class="product-card"><span class="product-emoji">🍼</span><h4>Baby Moisturizer</h4><div class="product-tag">Baby Care</div></div>
+      <div class="product-card"><span class="product-emoji">🪥</span><h4>Hygiene</h4><div class="product-tag">Personal Care</div></div>
+      <div class="product-card"><span class="product-emoji">🌻</span><h4>Vitamin E</h4><div class="product-tag">Wellness</div></div>
+      <div class="product-card"><span class="product-emoji">🌸</span><h4>Claritin</h4><div class="product-tag">Allergy Relief</div></div>
+      <div class="product-card"><span class="product-emoji">🍫</span><h4>Chocolate</h4><div class="product-tag">Snacks</div></div>
+      <div class="product-card"><span class="product-emoji">💊</span><h4>OTC Medications</h4><div class="product-tag">Health</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- INSURANCE -->
+<section class="section insurance-section" id="insurance">
+  <div class="section-title">
+    <h2>We Accept All Insurances</h2>
+    <p>Don't see yours? Call us — chances are, we take it.</p>
+    <div class="line"></div>
+  </div>
+  <div class="insurance-grid">
+    <div class="insurance-pill">Horizon</div>
+    <div class="insurance-pill">Medicaid</div>
+    <div class="insurance-pill">Blue Cross Blue Shield</div>
+    <div class="insurance-pill">Aetna</div>
+    <div class="insurance-pill">Cigna</div>
+    <div class="insurance-pill">United Healthcare</div>
+    <div class="insurance-pill">Medicaid Part D</div>
+    <div class="insurance-pill">WellCare</div>
+    <div class="insurance-pill">AmeriHealth</div>
+    <div class="insurance-pill">Express Scripts</div>
+    <div class="insurance-pill">CVS Caremark</div>
+    <div class="insurance-pill">& Many More ✓</div>
+  </div>
+</section>
+
+<!-- ⭐ RATE US / REVIEW SECTION ── BOTTOM OF PAGE -->
+<section class="review-section" id="review">
+  <h2>⭐ How Did We Do?</h2>
+  <p>Your feedback helps us grow and serve you better. We'd love to hear from you!</p>
+  <div class="star-prompt">Tap a star to rate your experience:</div>
+  <div class="stars-container" id="starsContainer">
+    <button class="star-btn" data-rating="1" title="1 star">⭐</button>
+    <button class="star-btn" data-rating="2" title="2 stars">⭐</button>
+    <button class="star-btn" data-rating="3" title="3 stars">⭐</button>
+    <button class="star-btn" data-rating="4" title="4 stars">⭐</button>
+    <button class="star-btn" data-rating="5" title="5 stars">⭐</button>
+  </div>
+  <div class="star-label" id="starLabel"></div>
+  <a href="https://maps.app.goo.gl/pRjNbzLY3EqETEwZA" target="_blank" class="review-go-btn" id="reviewBtn">
+    ✍️ Leave Us a Google Review
+  </a>
+  <p class="google-note">You'll be taken to our Google Reviews page.</p>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="./ChatGPT Image May 2, 2026, 06_00_19 PM.png" alt="TriPharm Logo"/>
+      <p>Your Health. Our Priority.<br/>Proudly serving the Staten Island community.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="services.html">Our Services</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="insurance.html">Insurance</a></li>
+        <li><a href="about.html">About Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#">Prescription Refills</a></li>
+        <li><a href="#">Free Home Delivery</a></li>
+        <li><a href="#">Same-Day Filling</a></li>
+        <li><a href="#">Medication Counseling</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact Us</h4>
+      <ul>
+        <li><a href="tel:+1-000-000-0000">📞 (718) 816-1116 </a></li>
+        <li><a href="mailto:info@tripharmpharmacy.com">✉️ Email Us</a></li>
+        <li><a href="#">📍 Staten Island, NY</a></li>
+        <li><a href="about.html">🕐 Hours & Info</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2026 TriPharm Pharmacy. All rights reserved. | Better Care, Starts Here.
+  </div>
+</footer>
+
+<script>
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMenu() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  }
+
+  // Star rating
+  const stars = document.querySelectorAll('.star-btn');
+  const label = document.getElementById('starLabel');
+  const reviewBtn = document.getElementById('reviewBtn');
+
+  // Google Maps review URL for tripharm–//
+  const GOOGLE_REVIEW_URL = 'https://share.google/Qiku3rx9CTpDlJUV3';
+
+  const labels = ['', 'Poor 😞', 'Fair 😐', 'Good 😊', 'Very Good 😄', 'Excellent! 🌟'];
+
+  stars.forEach(star => {
+    star.addEventListener('click', () => {
+      const rating = parseInt(star.dataset.rating);
+      stars.forEach((s, i) => {
+        s.classList.toggle('active', i < rating);
+        s.style.filter = i < rating ? 'none' : 'grayscale(1) opacity(.4)';
+        s.style.transform = i < rating ? 'scale(1.15)' : 'scale(1)';
+      });
+      label.textContent = labels[rating];
+      reviewBtn.classList.add('visible');
+      reviewBtn.href = GOOGLE_REVIEW_URL;
+    });
+
+    star.addEventListener('mouseover', () => {
+      const rating = parseInt(star.dataset.rating);
+      stars.forEach((s, i) => {
+        s.style.filter = i < rating ? 'none' : 'grayscale(1) opacity(.4)';
+      });
+      label.textContent = labels[rating];
+    });
+
+    star.addEventListener('mouseout', () => {
+      const anyActive = [...stars].some(s => s.classList.contains('active'));
+      if (!anyActive) {
+        stars.forEach(s => s.style.filter = 'grayscale(1) opacity(.5)');
+        label.textContent = '';
+      } else {
+        const activeCount = [...stars].filter(s => s.classList.contains('active')).length;
+        stars.forEach((s, i) => {
+          s.style.filter = i < activeCount ? 'none' : 'grayscale(1) opacity(.4)';
+        });
+        label.textContent = labels[activeCount];
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

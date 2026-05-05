@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <!-- Half blue, half green gradient (left=blue, right=green) -->
+    <linearGradient id="heartGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="50%" stop-color="#1565C0"/>
+      <stop offset="50%" stop-color="#2E7D32"/>
+    </linearGradient>
+  </defs>
+
+  <!-- White background -->
+  <circle cx="32" cy="32" r="32" fill="white"/>
+
+  <!-- Heart shape centered -->
+  <path d="M32 50 C32 50 8 35 8 21 C8 13.5 14 8 21 8 C25.5 8 29.5 10.5 32 14.5 C34.5 10.5 38.5 8 43 8 C50 8 56 13.5 56 21 C56 35 32 50 32 50 Z"
+        fill="url(#heartGrad)"/>
+</svg>
